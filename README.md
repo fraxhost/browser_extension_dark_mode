@@ -77,10 +77,26 @@ Before uploading, prepare the following:
 | Marquee banner | 1400×560 PNG | No |
 
 ### 3. Package the Extension
-Zip the project folder (everything at the root level, not a parent folder):
+The zip must only contain the files the browser runs. The `assets/`, `README.md`, and `CLAUDE.md` are repo-only files and must be excluded. Upload the store assets separately through the dashboard UI (see step 4).
+
 ```bash
 cd browser_extension_dark_mode
-zip -r ../dark-mode-toggle.zip . --exclude "*.DS_Store" --exclude "__MACOSX/*"
+zip -r ../dark-mode-toggle.zip manifest.json popup/ content/ icons/ --exclude "*.DS_Store"
+```
+
+The zip will contain exactly:
+
+```text
+manifest.json
+popup/popup.html
+popup/popup.css
+popup/popup.js
+content/content.js
+content/dark-mode.css
+icons/icon16.png
+icons/icon32.png
+icons/icon48.png
+icons/icon128.png
 ```
 
 ### 4. Submit
@@ -113,10 +129,11 @@ Google manually reviews new submissions — typically **3–7 business days**. T
 | Screenshot(s) | Any reasonable size | Recommended |
 
 ### 3. Package the Extension
-Use the same zip as Chrome (the manifest already contains `browser_specific_settings.gecko` for Firefox compatibility):
+Use the same zip as Chrome — the manifest already contains `browser_specific_settings.gecko` for Firefox compatibility. Exclude repo-only files the same way:
+
 ```bash
 cd browser_extension_dark_mode
-zip -r ../dark-mode-toggle-firefox.zip . --exclude "*.DS_Store" --exclude "__MACOSX/*"
+zip -r ../dark-mode-toggle-firefox.zip manifest.json popup/ content/ icons/ --exclude "*.DS_Store"
 ```
 
 ### 4. Submit

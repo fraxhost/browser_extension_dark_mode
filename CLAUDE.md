@@ -50,7 +50,11 @@ The `browser_specific_settings.gecko` block in `manifest.json` makes the same zi
 7. Open a `chrome://` page → popup should show "Not available on this page"
 
 ## Packaging for Store Submission
+Only include the files the browser runs. The `assets/`, `README.md`, and `CLAUDE.md` are repo-only and must be excluded. Upload store assets separately through each dashboard's UI.
+
 ```bash
-zip -r ../dark-mode-toggle.zip . --exclude "*.DS_Store" --exclude "__MACOSX/*"
+cd browser_extension_dark_mode
+zip -r ../dark-mode-toggle.zip manifest.json popup/ content/ icons/ --exclude "*.DS_Store"
 ```
-Same zip works for both Chrome Web Store and Firefox AMO. See README.md for full submission steps.
+
+The same zip works for both Chrome Web Store and Firefox AMO. See README.md for full submission steps.
