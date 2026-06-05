@@ -1,0 +1,13 @@
+html.dark-mode-active {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Double-invert media elements so photos/videos look natural */
+html.dark-mode-active img,
+html.dark-mode-active video,
+html.dark-mode-active iframe,
+html.dark-mode-active canvas,
+html.dark-mode-active picture,
+html.dark-mode-active [style*="background-image"] {
+  filter: invert(1) hue-rotate(180deg);
+}
